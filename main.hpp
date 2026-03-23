@@ -1,5 +1,9 @@
 // main.hpp
-#include <bits/stdc++.h>
+#include <stdio.h>
+#include <algorithm>
+#include <vector>
+#include <iostream>
+#include <fstream>
 using namespace std;
 
 void miyabi() {
