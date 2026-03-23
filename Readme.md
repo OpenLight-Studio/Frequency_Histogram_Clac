@@ -108,8 +108,7 @@ histogram/
 | macOS    | `histogram-macos-latest.tar.gz` |
 | Windows  | `histogram-windows.zip` |
 
-👉 [下载最新版本](https://github.com/your-username/histogram/releases)  
-*(请将 `your-username` 替换为实际仓库所有者)*
+👉 [下载最新版本](https://github.com/OpenLight-Studio/Frequency_Histogram_Clac/releases/tag/v1.0.2)  
 
 ---
 
