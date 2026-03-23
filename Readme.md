@@ -165,4 +165,4 @@ histogram.exe
 
 ---
 
-Made by OpenLight Studio with ♥️
+###### Made by OpenLight Studio with ♥️
