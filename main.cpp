@@ -1,37 +1,38 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-vector<int>a;
-int groupDiffLength,maxHeight;
-int groupCnt,maxn=1e9,minn=-1e9;
-int main(){
-    int n=1;
-    while(cin>>a[n]){
-        maxn=max(maxn,a[n]),minn=min(minn,a[n]);
-        n++;
+int main() {
+    vector<int> a;
+    int x;
+    while (cin >> x)
+        a.push_back(x);
+    if (a.empty()) return 0;
+    int groupDiffLength;
+    cin >> groupDiffLength;
+    int minn = *min_element(a.begin(), a.end());
+    int maxn = *max_element(a.begin(), a.end());
+    int range = maxn - minn;
+    int groupCnt = (range + groupDiffLength - 1) / groupDiffLength;
+    if (groupCnt == 0) groupCnt = 1;
+    vector<int> freq(groupCnt, 0);
+    for (int x : a) {
+        int idx = (x - minn) / groupDiffLength;
+        if (idx >= groupCnt) idx = groupCnt - 1;
+        freq[idx]++;
     }
-    cin>>groupDiffLength;
-    groupCnt=(maxn-minn)/groupDiffLength;
-    vector<char,vector<char>>imageRes;
-    int memoryImage[n+5];
-    for(int i=1;i<=n;i++){
-        int j=1,tmp=minn;
-        while(a[j]<tmp){
-            tmp+=groupDiffLength*j;
-            j++;
+    int maxHeight = *max_element(freq.begin(), freq.end());
+    for (int h = maxHeight; h >= 1; h--) {
+        for (int i = 0; i < groupCnt; i++) {
+            if (freq[i] >= h)
+                cout << '*';
+            else
+                cout << ' ';
         }
-        memoryImage[tmp]++;
+        cout << '\n';
     }
-    for(int i=1;i<=groupCnt;i++)
-        maxHeight=max(maxHeight,memoryImage[i]);
-    for(int i=1;i<=groupCnt;i++){
-        for(int j=1;j<=memoryImage[i];j++)
-            imageRes[i][j]='*';
-    }
-    for(int i=1;i<=groupCnt;i++)
-        for(int k=maxHeight;k>=1;k--)
-            cout<<imageRes[i][k];
-    cout<<endl;
-    for(int i=1;i<=groupCnt;i++)cout<<'-';
-    cout<<endl;
-    for(int i=1;i<=groupCnt;i++)cout<<i;
+    for (int i = 0; i < groupCnt; i++) cout << '-';
+    cout << '\n';
+    for (int i = 0; i < groupCnt; i++)
+        cout << (i % 10);
+    cout << endl;
+    return 0;
 }
